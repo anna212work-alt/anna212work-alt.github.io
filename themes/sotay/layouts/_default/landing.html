@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{/* Trang thu lead: không có menu, chỉ một hành động duy nhất */}}
+<section class="landing band">
+  <div class="land-in">
+    <a class="logo small" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <h1>{{ .Title }}</h1>
+    <div class="body">{{ .Content }}</div>
+    <a class="btn big" href="{{ site.Params.leadFormURL }}">{{ .Params.cta | default "Nhận quà ngay" }}</a>
+    <p class="fine">Miễn phí. Mình không gửi thư rác, bạn có thể huỷ đăng ký bất cứ lúc nào.</p>
+  </div>
+</section>
+{{ end }}
