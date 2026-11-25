@@ -1,0 +1,13 @@
+<header class="top">
+  <nav class="nav" aria-label="Điều hướng chính">
+    <a class="logo" href="{{ "/" | relURL }}">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="3" width="20" height="20" rx="4" fill="var(--berry)"/><path d="M8 9h10M8 13h10M8 17h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      {{ site.Title }}
+    </a>
+    {{ $cur := . }}
+    {{ range site.Menus.main }}
+      <a class="l{{ if or ($cur.IsMenuCurrent "main" .) ($cur.HasMenuCurrent "main" .) }} on{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+    {{ end }}
+    <a class="btn sm" href="{{ "/qua-tang/" | relURL }}">Nhận quà miễn phí</a>
+  </nav>
+</header>
