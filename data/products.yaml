@@ -1,0 +1,70 @@
+# ===== KHO ĐỒ ANNA DÙNG =====
+# Mỗi sản phẩm là một khối bắt đầu bằng dấu "-".
+# id: tên ngắn không dấu (dùng để chèn vào bài: {{< sanpham id="may-ham-sua" >}})
+# group: nhóm (so-sinh / an-dam / cho-me / gia-dung)
+# link: DÁN LINK AFFILIATE (Shopee, TikTok Shop...) của bạn vào đây
+# featured: true = hiện ở trang chủ
+# Các sản phẩm dưới đây là MẪU, hãy thay bằng đồ bạn dùng thật.
+- id: may-ham-sua
+  group: so-sinh
+  name: Máy hâm sữa và tiệt trùng bình 2 trong 1
+  why: Cứu mình những đêm 3 giờ sáng. Hâm nhanh, giữ ấm được, đặt cạnh giường là xong.
+  badge: Dùng mỗi ngày
+  price: ""
+  shop: Shopee
+  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
+  featured: true
+- id: khan-xo-tre
+  group: so-sinh
+  name: Khăn xô sợi tre (set 10 chiếc)
+  why: Mềm, thấm tốt, giặt nhiều vẫn bền. Mua một set là dùng được rất lâu.
+  badge: Đáng tiền nhất
+  price: ""
+  shop: Shopee
+  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
+  featured: true
+- id: binh-sua-co-rong
+  group: an-dam
+  name: Bình sữa cổ rộng
+  why: Cổ rộng nên rửa dễ hơn hẳn. Mình chỉ mua 3 bình, không mua cả bộ.
+  badge: ""
+  price: ""
+  shop: Shopee
+  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
+  featured: false
+- id: ghe-an-dam
+  group: an-dam
+  name: Ghế ăn dặm gấp gọn
+  why: Gấp lại để góc bếp, mang sang nhà ông bà cũng tiện.
+  badge: Bản tiết kiệm
+  price: ""
+  shop: TikTok Shop
+  link: "https://vt.tiktok.com/DAN-LINK-AFFILIATE"
+  featured: false
+- id: tui-giu-nhiet
+  group: cho-me
+  name: Túi giữ nhiệt đựng sữa đi làm
+  why: Gọn, có đá khô kèm theo, để vừa ngăn bàn làm việc.
+  badge: Dùng mỗi ngày
+  price: ""
+  shop: Shopee
+  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
+  featured: true
+- id: so-ke-hoach
+  group: cho-me
+  name: Sổ kế hoạch tuần
+  why: Một trang cho việc nhà, một trang cho việc công ty. Đầu óc nhẹ đi nhiều.
+  badge: ""
+  price: ""
+  shop: Shopee
+  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
+  featured: false
+- id: noi-com-hen-gio
+  group: gia-dung
+  name: Nồi nấu chậm hẹn giờ
+  why: Tối cho nguyên liệu vào, sáng có cháo cho con. Tiết kiệm được 30 phút mỗi sáng.
+  badge: ""
+  price: ""
+  shop: Shopee
+  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
+  featured: false
