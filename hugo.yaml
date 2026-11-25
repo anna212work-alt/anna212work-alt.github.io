@@ -1,0 +1,66 @@
+# ===== CẤU HÌNH CHÍNH CỦA WEBSITE =====
+# Khi đưa lên GitHub Pages, đổi "ten-github-cua-ban" thành tên tài khoản GitHub của bạn.
+baseURL: "https://anna212work-alt.github.io/"
+languageCode: "vi"
+defaultContentLanguage: "vi"
+title: "Sổ tay của Anna"
+theme: "sotay"
+enableEmoji: true
+removePathAccents: true
+summaryLength: 30
+
+params:
+  description: "Mẹ GenZ đi làm, nuôi con kiểu tối giản và tính toán. Mình chia sẻ những gì thật sự dùng được."
+  author: "Anna"
+  # Link form đăng ký nhận quà (Google Form, MailerLite...). Dán link của bạn vào đây.
+  leadFormURL: "https://forms.gle/DAN-LINK-GOOGLE-FORM-CUA-BAN"
+  # Link tải quà, hiện ở trang Cảm ơn (ví dụ link Google Drive của file Excel).
+  giftDownloadURL: "https://drive.google.com/DAN-LINK-FILE-QUA"
+  tiktok: "https://www.tiktok.com/@ten-cua-ban"
+  facebook: "https://www.facebook.com/ten-cua-ban"
+  email: "email-hop-tac@gmail.com"
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+menus:
+  main:
+    - name: "Blog"
+      url: "/posts/"
+      weight: 1
+    - name: "Đồ Anna dùng"
+      url: "/do-anna-dung/"
+      weight: 2
+    - name: "Review"
+      url: "/review/"
+      weight: 3
+    - name: "Về Anna"
+      url: "/ve-anna/"
+      weight: 4
+  footer:
+    - name: "Hợp tác"
+      url: "/hop-tac/"
+      weight: 1
+    - name: "Công khai affiliate"
+      url: "/cong-khai-affiliate/"
+      weight: 2
+    - name: "Chính sách bảo mật"
+      url: "/chinh-sach-bao-mat/"
+      weight: 3
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+titleCaseStyle: "none"
+
+related:
+  includeNewer: true
+  threshold: 0
+  toLower: true
+  indices:
+    - name: categories
+      weight: 100
+    - name: date
+      weight: 10
