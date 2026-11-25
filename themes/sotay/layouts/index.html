@@ -1,0 +1,48 @@
+{{ define "main" }}
+<section class="hero band">
+  <div class="wrap hero-in">
+    <div>
+      <h1>Nuôi con tối giản, chi tiêu có tính toán</h1>
+      <p class="lead-t">Mình là Anna: mẹ GenZ, dân kế toán, vừa đi làm vừa nuôi con gái nhỏ. Ở đây mình chia sẻ những gì thật sự dùng được, kể cả những món mình thấy không đáng tiền.</p>
+      <div class="btns">
+        <a class="btn" href="{{ "/qua-tang/" | relURL }}">Nhận file Excel miễn phí</a>
+        <a class="btn ghost" href="{{ "/posts/" | relURL }}">Đọc blog</a>
+      </div>
+    </div>
+    {{ partial "scene.html" . }}
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2 class="sec">Bạn đang ở giai đoạn nào?</h2>
+    <div class="doors">
+      <a class="door" href="{{ "/categories/nuoi-con-nho/" | relURL }}"><b>Mới sinh con</b><span>Đồ cần thật sự, lịch sinh hoạt, những đêm thức trắng</span></a>
+      <a class="door" href="{{ "/categories/me-di-lam/" | relURL }}"><b>Sắp đi làm lại</b><span>Sắp xếp thời gian, gửi con, giữ sức cho mình</span></a>
+      <a class="door" href="{{ "/categories/chi-tieu-thong-minh/" | relURL }}"><b>Muốn tiết kiệm</b><span>Ngân sách nuôi con, mua gì – bỏ gì, so sánh giá</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="band tint">
+  <div class="wrap">
+    <div class="sec-h"><h2 class="sec">Bài mới nhất</h2><a href="{{ "/posts/" | relURL }}">Xem tất cả →</a></div>
+    <div class="grid">
+      {{ range first 6 (where site.RegularPages "Section" "in" (slice "posts" "review")) }}{{ partial "card.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sec-h"><h2 class="sec">Đồ mình dùng mỗi ngày</h2><a href="{{ "/do-anna-dung/" | relURL }}">Xem cả kho đồ →</a></div>
+    <div class="prods">
+      {{ range first 3 (where site.Data.products "featured" true) }}{{ partial "product.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">{{ partial "leadbox.html" . }}</div>
+</section>
+{{ end }}
