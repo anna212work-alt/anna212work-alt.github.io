@@ -1,12 +1,14 @@
 {{ define "main" }}
 {{/* Trang thu lead: không có menu, chỉ một hành động duy nhất */}}
-<section class="landing band">
+<section class="landing">
   <div class="land-in">
-    <a class="logo small" href="{{ "/" | relURL }}">{{ site.Title }}</a>
-    <h1>{{ .Title }}</h1>
-    <div class="body">{{ .Content }}</div>
-    <a class="btn big" href="{{ site.Params.leadFormURL }}">{{ .Params.cta | default "Nhận quà ngay" }}</a>
-    <p class="fine">Miễn phí. Mình không gửi thư rác, bạn có thể huỷ đăng ký bất cứ lúc nào.</p>
+    <h2 class="box-h"><a href="{{ "/" | relURL }}" style="color:inherit;text-decoration:none">{{ site.Title }}</a><span>Miễn phí</span></h2>
+    <div class="box-b">
+      <h1>{{ .Title }}</h1>
+      <div class="body" style="padding:0">{{ .Content }}</div>
+      <a class="btn full" href="{{ site.Params.leadFormURL }}">{{ .Params.cta | default "Nhận quà ngay" }}</a>
+      <p class="fine">Mình không gửi thư rác. Bạn huỷ đăng ký bất cứ lúc nào. <a href="{{ "/chinh-sach-bao-mat/" | relURL }}">Chính sách bảo mật</a></p>
+    </div>
   </div>
 </section>
 {{ end }}

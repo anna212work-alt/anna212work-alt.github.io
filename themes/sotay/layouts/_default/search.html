@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="wrap layout">
+  <div class="stackb">
+    <section class="box">
+      <div class="lh">
+        <h1>Tìm kiếm</h1>
+        <p>Tìm trong tất cả bài nhật ký, bài so sánh và món đồ (theo tên, nội dung, thông số).</p>
+        <form class="hd-search" style="width:100%;margin-top:10px" onsubmit="return false" role="search">
+          <input id="sq" type="search" placeholder="Ví dụ: bún chả, sách, ăn dặm…" aria-label="Từ khoá">
+        </form>
+      </div>
+    </section>
+    <section class="box">
+      <h2 class="box-h">Kết quả <span id="scount"></span></h2>
+      <ul class="sres" id="sres"><li>Nhập từ khoá để tìm.</li></ul>
+    </section>
+  </div>
+  {{ partial "sidebar.html" (dict "page" .) }}
+</div>
+<script>
+{
+const box=document.getElementById('sres'),cnt=document.getElementById('scount'),q=document.getElementById('sq');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d');
+let data=[];
+function run(){
+  const t=norm(q.value.trim());
+  if(!t){box.innerHTML='<li>Nhập từ khoá để tìm.</li>';cnt.textContent='';return}
+  const words=t.split(/\s+/);
+  const r=data.filter(d=>{const h=norm(d.title+' '+d.text+' '+d.kind);return words.every(w=>h.includes(w))});
+  cnt.textContent=r.length+' kết quả';
+  box.innerHTML=r.length?r.map(d=>'<li><small>'+esc(d.kind)+'</small><br><a href="'+esc(d.url)+'">'+esc(d.title)+'</a><br><small>'+esc(d.desc)+'</small></li>').join(''):'<li>Không tìm thấy. Thử từ khác ngắn hơn nhé.</li>';
+}
+fetch('{{ "index.json" | relURL }}').then(r=>r.json()).then(j=>{data=j;const p=new URLSearchParams(location.search).get('q');if(p){q.value=p}run()}).catch(()=>{box.innerHTML='<li>Không tải được dữ liệu tìm kiếm.</li>'});
+q.addEventListener('input',run);
+}
+</script>
+{{ end }}

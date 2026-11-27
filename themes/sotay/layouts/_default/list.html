@@ -1,25 +1,34 @@
 {{ define "main" }}
-<section class="band head">
-  <div class="wrap">
-    <h1>{{ .Title }}</h1>
-    {{ with .Content }}<div class="intro">{{ . }}</div>{{ end }}
-    {{ if or (eq .Section "posts") (eq .Kind "term") (eq .Kind "taxonomy") }}
-    <div class="chips">
-      <a class="chip{{ if eq .Section "posts" }} on{{ end }}" href="{{ "/posts/" | relURL }}">Tất cả</a>
-      {{ $cur := .RelPermalink }}
-      {{ range site.Taxonomies.categories.ByCount }}
-        <a class="chip{{ if eq .Page.RelPermalink $cur }} on{{ end }}" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
-      {{ end }}
+<div class="wrap">
+  {{ partial "crumbs.html" . }}
+  <div class="layout">
+    <div class="stackb">
+      <section class="box"{{ with .Params.color }} style="--c:var(--{{ . }})"{{ end }}>
+        <div class="lh">
+          <h1>{{ .Title }}</h1>
+          {{ with .Description }}<p>{{ . }}</p>{{ end }}
+          {{ with .Content }}<div class="intro">{{ . }}</div>{{ end }}
+          <dl class="facts" style="margin-top:10px">
+            <div><dt>Số bài</dt><dd>{{ len .Pages }}</dd></div>
+            {{ with index .Pages 0 }}<div><dt>Cập nhật gần nhất</dt><dd>{{ .Date | time.Format "02/01/2006" }}</dd></div>{{ end }}
+            <div><dt>Tổng thời gian đọc</dt><dd>{{ $t := 0 }}{{ range .Pages }}{{ $t = add $t .ReadingTime }}{{ end }}{{ $t }} phút</dd></div>
+          </dl>
+          {{ if or (eq .Section "posts") (eq .Kind "term") }}
+          <div class="chips">
+            <a class="chip{{ if eq .Section "posts" }} on{{ end }}" href="{{ "/posts/" | relURL }}">Tất cả</a>
+            {{ $cur := .RelPermalink }}
+            {{ range (site.GetPage "/categories").Pages.ByTitle }}<a class="chip{{ if eq .RelPermalink $cur }} on{{ end }}" href="{{ .RelPermalink }}">{{ .Title }} ({{ len .Pages }})</a>{{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </section>
+      <section class="box">
+        <h2 class="box-h">Danh sách bài <span>Mới nhất trước</span></h2>
+        {{ range .Pages }}{{ partial "postrow.html" . }}{{ else }}<div class="box-b empty-s"><b>Chưa có bài nào ở đây.</b><span>Những câu chuyện đầu tiên sẽ sớm xuất hiện. Bạn nhận sổ tay miễn phí ở cuối trang để không bỏ lỡ nhé.</span></div>{{ end }}
+      </section>
+      {{ partial "leadbox.html" . }}
     </div>
-    {{ end }}
+    {{ partial "sidebar.html" (dict "page" .) }}
   </div>
-</section>
-<section class="band">
-  <div class="wrap">
-    <div class="grid">
-      {{ range .Pages }}{{ partial "card.html" . }}{{ else }}<p class="empty">Chưa có bài nào ở đây.</p>{{ end }}
-    </div>
-  </div>
-</section>
-<section class="band"><div class="wrap">{{ partial "leadbox.html" . }}</div></section>
+</div>
 {{ end }}

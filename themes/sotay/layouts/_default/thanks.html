@@ -1,14 +1,19 @@
 {{ define "main" }}
-<div class="band">
-  <article class="reader">
-    <h1>{{ .Title }}</h1>
-    <div class="body">{{ .Content }}</div>
-    <p><a class="btn big" href="{{ site.Params.giftDownloadURL }}">Tải quà của bạn</a></p>
-    <h2 class="sec" style="margin-top:40px">Trong lúc chờ, đây là những món mình dùng nhiều nhất</h2>
-    <div class="prods">{{ range first 3 (where site.Data.products "featured" true) }}{{ partial "product.html" . }}{{ end }}</div>
-    <p style="margin-top:24px">Theo dõi mình để xem nhật ký hằng ngày:
-      {{ with site.Params.tiktok }}<a href="{{ . }}">TikTok</a>{{ end }} ·
-      {{ with site.Params.facebook }}<a href="{{ . }}">Facebook</a>{{ end }}</p>
-  </article>
+<div class="wrap layout">
+  <div class="stackb">
+    <section class="box">
+      <h2 class="box-h">Đăng ký thành công</h2>
+      <div class="box-b">
+        <h1 style="font-size:30px;margin-bottom:8px">{{ .Title }}</h1>
+        <div class="body" style="padding:0">{{ .Content }}</div>
+        <a class="btn" href="{{ site.Params.giftDownloadURL }}">Tải {{ site.Params.giftName }}</a>
+      </div>
+    </section>
+    <section class="box">
+      <h2 class="box-h">Trong lúc chờ: những món nhỏ mình dùng nhiều nhất <a href="{{ "/do-dung/" | relURL }}">Tất cả →</a></h2>
+      <div class="pgrid">{{ range first 3 (where site.Data.products "featured" true) }}{{ partial "prodcard.html" . }}{{ end }}</div>
+    </section>
+  </div>
+  {{ partial "sidebar.html" (dict "page" .) }}
 </div>
 {{ end }}

@@ -1,25 +1,57 @@
 {{ define "main" }}
-<div class="band">
-  <article class="reader">
-    {{ if .IsPage }}{{ if in (slice "posts" "review") .Section }}
-      <a class="back" href="{{ (site.GetPage .Section).RelPermalink }}">← {{ if eq .Section "review" }}Tất cả review{{ else }}Tất cả bài viết{{ end }}</a>
-      {{ with .GetTerms "categories" }}{{ with index . 0 }}<a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
-    {{ end }}{{ end }}
-    <h1>{{ .Title }}</h1>
-    {{ if in (slice "posts" "review") .Section }}
-      <span class="meta">{{ .Date | time.Format "02/01/2006" }} · {{ .ReadingTime }} phút đọc</span>
-      {{ if .Params.affiliate }}<p class="aff">Bài có liên kết tiếp thị. Mình chỉ giới thiệu đồ đã dùng thật. <a href="{{ "/cong-khai-affiliate/" | relURL }}">Vì sao?</a></p>{{ end }}
-    {{ end }}
-    <div class="body">{{ .Content }}</div>
+{{ $isPost := in (slice "posts" "review") .Section }}
+<div class="wrap">
+  {{ partial "crumbs.html" . }}
+  <div class="layout">
+    <div class="stackb">
+      <article class="box">
+        <header class="art-h">
+          {{ with .GetTerms "categories" }}{{ with index . 0 }}<a class="tag" style="--c:var(--{{ .Params.color | default "aqua" }})" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
+          {{ if .Params.sample }}<span class="sample-s">bài viết mẫu</span>{{ end }}
+          <h1>{{ .Title }}</h1>
+          {{ if $isPost }}
+          <dl class="facts">
+            <div><dt>Ngày viết</dt><dd>{{ .Date | time.Format "02/01/2006" }}</dd></div>
+            <div><dt>Cập nhật</dt><dd>{{ .Lastmod | time.Format "02/01/2006" }}</dd></div>
+            <div><dt>Thời gian đọc</dt><dd>{{ .ReadingTime }} phút</dd></div>
+            <div><dt>Độ dài</dt><dd>{{ .WordCount }} chữ</dd></div>
+            {{ with .Params.place }}<div><dt>Ở đâu</dt><dd>{{ . }}</dd></div>{{ end }}
+            {{ with .Params.mood }}<div><dt>Tâm trạng</dt><dd>{{ . }}</dd></div>{{ end }}
+          </dl>
+          {{ with .Params.products }}<p class="aff">Bài có nhắc đến {{ len . }} món đồ, kèm liên kết tiếp thị. Mình chỉ nhắc đồ đã dùng thật. <a href="{{ "/cong-khai-affiliate/" | relURL }}">Vì sao?</a></p>{{ end }}
+          {{ end }}
+        </header>
+        <div class="body">{{ .Content }}</div>
+        {{ with .GetTerms "tags" }}<div class="box-b tags" style="border-top:1px solid var(--line)">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</div>{{ end }}
+      </article>
 
-    {{ if in (slice "posts" "review") .Section }}
-      {{ partial "leadbox.html" . }}
-      {{ $related := .Site.RegularPages.Related . | first 2 }}
-      {{ with $related }}
-      <div class="next"><h2>Đọc tiếp</h2><div class="grid">{{ range . }}{{ partial "card.html" . }}{{ end }}</div></div>
+      {{ with .Params.products }}
+      <section class="box">
+        <h2 class="box-h">Những món có trong bài <a href="{{ "/do-dung/" | relURL }}">Tất cả món đồ →</a></h2>
+        <div class="pgrid">{{ range . }}{{ $id := . }}{{ range where site.Data.products "id" $id }}{{ partial "prodcard.html" . }}{{ end }}{{ end }}</div>
+      </section>
       {{ end }}
-    {{ end }}
-    {{ if eq .Layout "about" }}{{ partial "leadbox.html" . }}{{ end }}
-  </article>
+
+      {{ with .Params.places }}
+      <section class="box">
+        <h2 class="box-h">Quán có trong bài <a href="{{ "/quan-an/" | relURL }}">Sổ quán ăn →</a></h2>
+        <div class="pgrid">{{ range . }}{{ $id := . }}{{ range where site.Data.places "id" $id }}{{ partial "placecard.html" . }}{{ end }}{{ end }}</div>
+      </section>
+      {{ end }}
+
+      {{ if $isPost }}
+      <nav class="box pn" aria-label="Bài trước và sau">
+        {{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><small>← Bài mới hơn</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+        {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><small>Bài cũ hơn →</small>{{ .Title }}</a>{{ end }}
+      </nav>
+      {{ partial "leadbox.html" . }}
+      {{ with site.RegularPages.Related . | first 3 }}
+      <section class="box"><h2 class="box-h">Đọc tiếp</h2>{{ range . }}{{ partial "postrow.html" . }}{{ end }}</section>
+      {{ end }}
+      {{ end }}
+      {{ if eq .Layout "about" }}{{ partial "leadbox.html" . }}{{ end }}
+    </div>
+    {{ partial "sidebar.html" (dict "page" . "toc" true) }}
+  </div>
 </div>
 {{ end }}
