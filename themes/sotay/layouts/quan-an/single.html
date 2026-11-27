@@ -1,1 +1,72 @@
-{{/* tam */}}
+{{ define "main" }}
+{{ $q := index (where site.Data.places "id" .Params.qid) 0 }}
+<div class="wrap">
+  {{ partial "crumbs.html" . }}
+  <div class="layout">
+    <div class="stackb">
+      {{ if $q.sample }}<p class="samplebar">Đây là <b>quán mẫu</b> để minh hoạ cách ghi chép. Thông tin sẽ được thay bằng quán thật nhà mình đã ghé.</p>{{ end }}
+      <section class="box ph">
+        <div class="ph-main">
+          <div class="row" style="gap:6px"><span class="tag">{{ $q.type }}</span><span class="badge">{{ $q.area }}</span></div>
+          <h1>{{ $q.name }}</h1>
+          <p>{{ $q.address }}</p>
+          <dl class="facts" style="margin-top:12px">
+            <div><dt>Giờ mở cửa</dt><dd>{{ $q.hours }}</dd></div>
+            <div><dt>Số lần ghé</dt><dd>{{ len $q.visits }}</dd></div>
+            <div><dt>Có quay lại?</dt><dd>{{ $q.revisit }}</dd></div>
+          </dl>
+        </div>
+        <div class="ph-buy">
+          <small>Điểm của nhà mình</small>
+          <div class="big">{{ $q.rating }}<small>/10</small></div>
+          <small>Giá / người</small>
+          <div class="price">{{ $q.price }}</div>
+          <small>Ghi giá ngày {{ $q.price_date }}. Giá có thể đã đổi.</small>
+          {{ with $q.map }}<a class="btn full" href="{{ . }}" target="_blank" rel="noopener">Mở bản đồ</a>{{ end }}
+          {{ with $q.post }}<a class="btn ghost full" href="{{ . | relURL }}">Đọc bài viết về quán</a>{{ end }}
+        </div>
+      </section>
+
+      <section class="box">
+        <h2 class="box-h">Món đã ăn <span>{{ len $q.dishes }} món</span></h2>
+        <div class="tbl-wrap"><table class="tbl stack">
+          <thead><tr><th>Món</th><th class="n">Giá</th><th>Ghi chú</th></tr></thead>
+          <tbody>{{ range $q.dishes }}<tr><td>{{ index . 0 }}</td><td class="n">{{ index . 1 }}</td><td>{{ index . 2 }}</td></tr>{{ end }}</tbody>
+        </table></div>
+      </section>
+
+      <div class="grid2">
+        <section class="box">
+          <h2 class="box-h">Điểm theo tiêu chí <span>thang 10</span></h2>
+          <div class="bars">{{ range $k, $v := $q.scores }}<div class="bar"><span>{{ $k }}</span><div class="bar-t"><i style="width:{{ mul $v 10 }}%"></i></div><b>{{ $v }}</b></div>{{ end }}</div>
+        </section>
+        <section class="box">
+          <h2 class="box-h">Thông tin thực tế</h2>
+          <dl class="kv" style="border:0;border-radius:0">
+            <div><dt>Đưa con nhỏ đi</dt><dd>{{ $q.kids }}</dd></div>
+            <div><dt>Chỗ để xe</dt><dd>{{ $q.parking }}</dd></div>
+            <div><dt>Địa chỉ</dt><dd>{{ $q.address }}</dd></div>
+          </dl>
+        </section>
+      </div>
+
+      <section class="box">
+        <h2 class="box-h">Những lần nhà mình ghé <span>{{ len $q.visits }} lần</span></h2>
+        <div class="tbl-wrap"><table class="tbl stack">
+          <thead><tr><th>Ngày</th><th>Đi cùng</th><th>Ghi nhớ</th></tr></thead>
+          <tbody>{{ range $q.visits }}<tr><td class="nw">{{ .date }}</td><td>{{ .with }}</td><td>{{ .note }}</td></tr>{{ end }}</tbody>
+        </table></div>
+      </section>
+
+      <section class="box"><h2 class="box-h">Mẹo nhỏ</h2><div class="box-b body" style="padding:12px 14px">{{ .Content }}</div></section>
+
+      <section class="box">
+        <h2 class="box-h">Quán khác trong sổ <a href="{{ "/quan-an/" | relURL }}">Tất cả →</a></h2>
+        <div class="pgrid">{{ range where site.Data.places "id" "!=" $q.id }}{{ partial "placecard.html" . }}{{ end }}</div>
+      </section>
+    </div>
+    {{ partial "sidebar.html" (dict "page" .) }}
+  </div>
+</div>
+<script>{for(const t of document.querySelectorAll('table.stack')){const h=[...t.tHead.rows[0].cells].map(c=>c.textContent);for(const r of t.tBodies[0].rows)[...r.cells].forEach((c,i)=>c.dataset.l=h[i]||'')}}</script>
+{{ end }}

@@ -1,0 +1,50 @@
+{{ define "main" }}
+{{ $pl := site.Data.places | default slice }}
+<div class="wrap">
+  {{ partial "crumbs.html" . }}
+  <div class="layout">
+    <div class="stackb">
+      <section class="box">
+        <div class="lh">
+          <h1>{{ .Title }}</h1>
+          <div class="intro">{{ .Content }}</div>
+          {{ $v := 0 }}{{ range $pl }}{{ $v = add $v (len .visits) }}{{ end }}
+          <dl class="facts" style="margin-top:10px">
+            <div><dt>Số quán</dt><dd>{{ len $pl }}</dd></div>
+            <div><dt>Tổng số lần ghé</dt><dd>{{ $v }}</dd></div>
+            {{ $types := slice }}{{ range $pl }}{{ $types = $types | append .type }}{{ end }}{{ $types = uniq $types }}
+            <div><dt>Loại quán</dt><dd>{{ len $types }}</dd></div>
+          </dl>
+          <div class="chips" id="pf">
+            <button class="chip on" data-f="">Tất cả</button>
+            {{ range $types }}<button class="chip" data-f="{{ . }}">{{ . }}</button>{{ end }}
+          </div>
+        </div>
+      </section>
+      {{ if where $pl "sample" true }}<p class="samplebar">Các quán có nhãn "mẫu" là ví dụ minh hoạ cách ghi chép. Mình sẽ thay bằng những quán nhà mình đã thật sự ghé.</p>{{ end }}
+      <section class="box">
+        <h2 class="box-h">Bảng tổng hợp <span>Sắp xếp theo điểm</span></h2>
+        {{ with $pl }}{{ partial "placetable.html" . }}{{ else }}<div class="box-b empty-s"><b>Sổ quán ăn đang trống.</b><span>Mỗi quán sẽ có: địa chỉ, giờ mở cửa, khoảng giá, món đã ăn kèm giá, điểm theo tiêu chí (ngon, sạch sẽ, giá, phục vụ, không gian), có hợp đưa con đi không, chỗ để xe, và những lần nhà mình ghé cùng ai.</span></div>{{ end }}
+      </section>
+      <section class="box">
+        <h2 class="box-h">Thẻ quán <span>Bấm để xem chi tiết</span></h2>
+        <div class="pgrid" id="pcards">
+          {{ range sort $pl "rating" "desc" }}{{ partial "placecard.html" . }}{{ else }}<p class="soon">Chưa có quán nào.</p>{{ end }}
+        </div>
+      </section>
+      {{ partial "leadbox.html" . }}
+    </div>
+    {{ partial "sidebar.html" (dict "page" .) }}
+  </div>
+</div>
+<script>
+{
+const chips=[...document.querySelectorAll('#pf .chip')];
+function apply(f){
+  chips.forEach(c=>c.classList.toggle('on',c.dataset.f===f));
+  document.querySelectorAll('#ptable tbody tr,#pcards .pcard').forEach(el=>{el.style.display=(!f||el.dataset.type===f)?'':'none'});
+}
+chips.forEach(c=>c.addEventListener('click',()=>apply(c.dataset.f)));
+}
+</script>
+{{ end }}
