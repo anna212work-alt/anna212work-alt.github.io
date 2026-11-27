@@ -1,48 +1,63 @@
 {{ define "main" }}
-<section class="hero band">
-  <div class="wrap hero-in">
-    <div>
-      <h1>Nuôi con tối giản, chi tiêu có tính toán</h1>
-      <p class="lead-t">Mình là Anna: mẹ GenZ, dân kế toán, vừa đi làm vừa nuôi con gái nhỏ. Ở đây mình chia sẻ những gì thật sự dùng được, kể cả những món mình thấy không đáng tiền.</p>
-      <div class="btns">
-        <a class="btn" href="{{ "/qua-tang/" | relURL }}">Nhận file Excel miễn phí</a>
-        <a class="btn ghost" href="{{ "/posts/" | relURL }}">Đọc blog</a>
+{{ $all := where site.RegularPages "Section" "in" (slice "posts" "review") }}
+<div class="wrap layout">
+  <div class="stackb">
+    <section class="box">
+      <h2 class="box-h">Chào bạn ghé chơi <span>{{ site.Params.tagline }}</span></h2>
+      <div class="feature">
+        <div class="feature-t">
+          <h1>Sổ tay của Anna</h1>
+          <p>Nơi mình lưu giữ những ngày bình thường của gia đình nhỏ: món ngon, sách hay, chuyện của con, những buổi tối bên chồng và vài điều mình nghĩ về cách sống chậm.</p>
+          <dl class="facts">
+            <div><dt>Chuyên mục</dt><dd>{{ len (site.GetPage "/categories").Pages }}</dd></div>
+            <div><dt>Bài viết</dt><dd>{{ len $all }}</dd></div>
+            <div><dt>Quán đã ghé</dt><dd>{{ len (site.Data.places | default slice) }}</dd></div>
+          </dl>
+          <div class="row" style="gap:8px"><a class="btn" href="{{ "/ve-anna/" | relURL }}">Đọc về mình</a><a class="btn ghost" href="{{ "/qua-tang/" | relURL }}">Nhận sổ tay miễn phí</a></div>
+        </div>
+        {{ partial "scene.html" . }}
       </div>
-    </div>
-    {{ partial "scene.html" . }}
-  </div>
-</section>
+    </section>
 
-<section class="band">
-  <div class="wrap">
-    <h2 class="sec">Bạn đang ở giai đoạn nào?</h2>
-    <div class="doors">
-      <a class="door" href="{{ "/categories/nuoi-con-nho/" | relURL }}"><b>Mới sinh con</b><span>Đồ cần thật sự, lịch sinh hoạt, những đêm thức trắng</span></a>
-      <a class="door" href="{{ "/categories/me-di-lam/" | relURL }}"><b>Sắp đi làm lại</b><span>Sắp xếp thời gian, gửi con, giữ sức cho mình</span></a>
-      <a class="door" href="{{ "/categories/chi-tieu-thong-minh/" | relURL }}"><b>Muốn tiết kiệm</b><span>Ngân sách nuôi con, mua gì – bỏ gì, so sánh giá</span></a>
+    <div class="grid3">
+      {{ range (site.GetPage "/categories").Pages.ByTitle }}
+      <section class="box catbox" style="--c:var(--{{ .Params.color | default "aqua" }})">
+        <h2 class="box-h">{{ .Title }} <a href="{{ .RelPermalink }}">{{ len .Pages }} bài →</a></h2>
+        <div class="box-b">
+          <p class="d">{{ .Description }}</p>
+          {{ with .Pages }}
+          <ul class="links" style="padding:0">{{ range first 3 . }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span class="nw">{{ .Date | time.Format "02/01" }}</span></li>{{ end }}</ul>
+          {{ else }}<p class="soon">Sắp có bài đầu tiên</p>{{ end }}
+        </div>
+      </section>
+      {{ end }}
+      <section class="box catbox" style="--c:var(--pink)">
+        <h2 class="box-h">Sổ quán ăn <a href="{{ "/quan-an/" | relURL }}">{{ len (site.Data.places | default slice) }} quán →</a></h2>
+        <div class="box-b">
+          <p class="d">Những quán nhà mình đã ghé: món đã gọi, giá, giờ mở cửa, có hợp đưa con đi không.</p>
+          {{ with site.Data.places }}<ul class="links" style="padding:0">{{ range first 3 (sort . "rating" "desc") }}<li><a href="{{ printf "/quan-an/%s/" .id | relURL }}">{{ .name }}</a><span>{{ .rating }}/10</span></li>{{ end }}</ul>{{ else }}<p class="soon">Sắp có quán đầu tiên</p>{{ end }}
+        </div>
+      </section>
     </div>
-  </div>
-</section>
 
-<section class="band tint">
-  <div class="wrap">
-    <div class="sec-h"><h2 class="sec">Bài mới nhất</h2><a href="{{ "/posts/" | relURL }}">Xem tất cả →</a></div>
-    <div class="grid">
-      {{ range first 6 (where site.RegularPages "Section" "in" (slice "posts" "review")) }}{{ partial "card.html" . }}{{ end }}
+    <section class="box">
+      <h2 class="box-h">Nhật ký gần đây <a href="{{ "/posts/" | relURL }}">Tất cả →</a></h2>
+      {{ range first 6 $all }}{{ partial "postrow.html" . }}{{ else }}<div class="box-b empty-s"><b>Cuốn sổ đang chờ trang đầu tiên.</b><span>Mình sẽ sớm viết những câu chuyện đầu tiên. Nhận sổ tay miễn phí ở dưới để không bỏ lỡ nhé.</span></div>{{ end }}
+    </section>
+
+    <div class="grid2">
+      <section class="box">
+        <h2 class="box-h">Sổ quán ăn <a href="{{ "/quan-an/" | relURL }}">Mở sổ →</a></h2>
+        {{ with site.Data.places }}{{ partial "placetable.html" . }}{{ else }}<div class="box-b empty-s"><b>Chưa có quán nào.</b><span>Mỗi quán sẽ có địa chỉ, giờ mở cửa, món đã ăn kèm giá, điểm từng tiêu chí và những lần nhà mình ghé.</span></div>{{ end }}
+      </section>
+      <section class="box">
+        <h2 class="box-h">Món nhỏ mình thương <a href="{{ "/do-dung/" | relURL }}">Xem →</a></h2>
+        {{ with site.Data.products }}{{ partial "comparetable.html" . }}{{ else }}<div class="box-b empty-s"><b>Chưa có món nào.</b><span>Mỗi món sẽ có đủ thông số, ưu nhược điểm, giá tham khảo kèm ngày xem giá.</span></div>{{ end }}
+      </section>
     </div>
-  </div>
-</section>
 
-<section class="band">
-  <div class="wrap">
-    <div class="sec-h"><h2 class="sec">Đồ mình dùng mỗi ngày</h2><a href="{{ "/do-anna-dung/" | relURL }}">Xem cả kho đồ →</a></div>
-    <div class="prods">
-      {{ range first 3 (where site.Data.products "featured" true) }}{{ partial "product.html" . }}{{ end }}
-    </div>
+    {{ partial "leadbox.html" . }}
   </div>
-</section>
-
-<section class="band">
-  <div class="wrap">{{ partial "leadbox.html" . }}</div>
-</section>
+  {{ partial "sidebar.html" (dict "page" .) }}
+</div>
 {{ end }}

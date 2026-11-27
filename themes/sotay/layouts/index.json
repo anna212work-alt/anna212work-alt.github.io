@@ -1,0 +1,13 @@
+{{- $out := slice -}}
+{{- range where site.RegularPages "Section" "in" (slice "posts" "review") -}}
+{{- $out = $out | append (dict "title" .Title "url" .RelPermalink "desc" (.Description | default (.Summary | plainify)) "text" (.Plain | truncate 4000) "kind" (cond (eq .Section "review") "So sánh" "Nhật ký")) -}}
+{{- end -}}
+{{- range site.Data.products -}}
+{{- $specs := slice -}}{{- range .specs -}}{{- $specs = $specs | append (printf "%s %s" (index . 0) (index . 1)) -}}{{- end -}}
+{{- $out = $out | append (dict "title" .name "url" (printf "/do-dung/%s/" .id | relURL) "desc" .short "text" (delimit $specs " ") "kind" "Món đồ") -}}
+{{- end -}}
+{{- range site.Data.places -}}
+{{- $d := slice -}}{{- range .dishes -}}{{- $d = $d | append (index . 0) -}}{{- end -}}
+{{- $out = $out | append (dict "title" .name "url" (printf "/quan-an/%s/" .id | relURL) "desc" (printf "%s · %s · %s" .type .area .price) "text" (printf "%s %s %s %s" (delimit $d " ") .address .tip .kids) "kind" "Quán ăn") -}}
+{{- end -}}
+{{- $out | jsonify -}}
