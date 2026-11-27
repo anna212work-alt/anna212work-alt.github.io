@@ -1,7 +1,0 @@
-<div class="prod">
-  {{ with .badge }}<span class="badge">{{ . }}</span>{{ end }}
-  <h3>{{ .name }}</h3>
-  <p>{{ .why }}</p>
-  {{ with .price }}<span class="price">Giá tham khảo: {{ . }}</span>{{ end }}
-  <a class="btn sm" href="{{ .link }}" rel="sponsored nofollow noopener" target="_blank">Xem trên {{ .shop | default "Shopee" }}</a>
-</div>
