@@ -1,5 +1,4 @@
 # ===== CẤU HÌNH CHÍNH CỦA WEBSITE =====
-# Khi đưa lên GitHub Pages, đổi "ten-github-cua-ban" thành tên tài khoản GitHub của bạn.
 baseURL: "https://anna212work-alt.github.io/"
 languageCode: "vi"
 defaultContentLanguage: "vi"
@@ -7,15 +6,18 @@ title: "Sổ tay của Anna"
 theme: "sotay"
 enableEmoji: true
 removePathAccents: true
+titleCaseStyle: "none"
 summaryLength: 30
 
 params:
-  description: "Mẹ GenZ đi làm, nuôi con kiểu tối giản và tính toán. Mình chia sẻ những gì thật sự dùng được."
+  tagline: "Lưu giữ những ngày bình thường của gia đình mình"
+  description: "Nhật ký đời thường nhẹ nhàng của một gia đình nhỏ: món ngon, sách hay, chuyện con cái, những ngày bình thường và vài suy nghĩ về cách sống. Kèm đánh giá thật, đủ thông số, cho những món đồ mình dùng mỗi ngày."
   author: "Anna"
   # Link form đăng ký nhận quà (Google Form, MailerLite...). Dán link của bạn vào đây.
   leadFormURL: "https://forms.gle/DAN-LINK-GOOGLE-FORM-CUA-BAN"
-  # Link tải quà, hiện ở trang Cảm ơn (ví dụ link Google Drive của file Excel).
+  # Link tải quà, hiện ở trang Cảm ơn.
   giftDownloadURL: "https://drive.google.com/DAN-LINK-FILE-QUA"
+  giftName: "Sổ tay 30 ngày ghi lại điều nhỏ"
   tiktok: "https://www.tiktok.com/@ten-cua-ban"
   facebook: "https://www.facebook.com/ten-cua-ban"
   email: "email-hop-tac@gmail.com"
@@ -24,20 +26,29 @@ taxonomies:
   category: "categories"
   tag: "tags"
 
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+
 menus:
   main:
-    - name: "Blog"
-      url: "/posts/"
+    - name: "Trang chủ"
+      url: "/"
       weight: 1
-    - name: "Đồ Anna dùng"
-      url: "/do-anna-dung/"
+    - name: "Nhật ký"
+      url: "/posts/"
       weight: 2
-    - name: "Review"
-      url: "/review/"
+    - name: "Sổ quán ăn"
+      url: "/quan-an/"
       weight: 3
+    - name: "Món nhỏ mình thương"
+      url: "/do-dung/"
+      weight: 4
+    - name: "So sánh"
+      url: "/review/"
+      weight: 5
     - name: "Về Anna"
       url: "/ve-anna/"
-      weight: 4
+      weight: 6
   footer:
     - name: "Hợp tác"
       url: "/hop-tac/"
@@ -48,12 +59,9 @@ menus:
     - name: "Chính sách bảo mật"
       url: "/chinh-sach-bao-mat/"
       weight: 3
-
-markup:
-  goldmark:
-    renderer:
-      unsafe: true
-titleCaseStyle: "none"
+    - name: "Tìm kiếm"
+      url: "/tim-kiem/"
+      weight: 4
 
 related:
   includeNewer: true
@@ -62,5 +70,15 @@ related:
   indices:
     - name: categories
       weight: 100
+    - name: tags
+      weight: 80
     - name: date
       weight: 10
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3

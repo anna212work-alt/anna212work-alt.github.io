@@ -65,8 +65,10 @@ Bấm **Commit changes**, website sẽ tự cập nhật sau khoảng 1 phút.
 title: "Tiêu đề bài viết"
 date: 2026-12-01
 description: "Một câu tóm tắt, hiện trên Google và thẻ bài."
-categories: ["Nuôi con nhỏ"]
-affiliate: true
+categories: ["Món ngon"]
+tags: ["bữa sáng"]
+products: ["coc-su-men-ran"]
+places: []
 ---
 
 Mở bài bằng câu chuyện thật của bạn...
@@ -77,10 +79,12 @@ Mở bài bằng câu chuyện thật của bạn...
 
 ## Ý chính thứ hai
 
-{{< sanpham id="may-ham-sua" >}}
+{{< sanpham id="coc-su-men-ran" >}}
 ```
 
-- `categories` chỉ chọn 1 trong 4: **Nuôi con nhỏ**, **Mẹ đi làm**, **Chi tiêu thông minh**, **Daily life của Anna**
+- `categories` chỉ chọn 1 trong 5: **Món ngon**, **Sách hay**, **Con cái**, **Chuyện hằng ngày**, **Quan điểm sống**
+- `products` / `places`: danh sách id món đồ / quán ăn nhắc trong bài (hiện thành hộp cuối bài)
+- `sample: true` hiện nhãn "bài viết mẫu" — bài thật thì xoá dòng này
 - `{{< nhanqua >}}` chèn ô "Nhận file miễn phí" vào giữa bài
 - `{{< sanpham id="..." >}}` chèn thẻ sản phẩm (lấy `id` trong file `data/products.yaml`)
 - Bài review/so sánh thì đặt trong thư mục `content/review`
@@ -93,13 +97,17 @@ Mở bài bằng câu chuyện thật của bạn...
 
 ---
 
+## Phần 4a. Thêm quán vào "Sổ quán ăn"
+
+Mở `data/places.yaml`, chép một khối `- id: ...` có sẵn rồi sửa. Mỗi quán tự có trang riêng tại `/quan-an/<id>/` và tự xuất hiện trong bảng tổng hợp, trang chủ, ô tìm kiếm. Các trường đã có chú thích ngay đầu file (món đã ăn, giá, giờ mở cửa, những lần ghé cùng ai, có hợp đưa con đi không...).
+
 ## Phần 4. Thêm sản phẩm affiliate
 
 Mở `data/products.yaml`. Mỗi sản phẩm là một khối như sau:
 
 ```
 - id: ten-khong-dau
-  group: so-sinh          # so-sinh / an-dam / cho-me / gia-dung
+  group: bep              # bep / be / doc-viet
   name: Tên sản phẩm
   why: Một câu vì sao bạn chọn nó
   badge: Dùng mỗi ngày    # hoặc để trống ""
