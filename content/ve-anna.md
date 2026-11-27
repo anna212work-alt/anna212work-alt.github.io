@@ -5,13 +5,13 @@ description: "Một người hướng nội thích sự chậm rãi, sống cùn
 ---
 ## Mình là người thế nào
 
-Mình là người hướng nội. Mình thích những buổi sáng yên tĩnh hơn những bữa tiệc đông người, thích quan sát hơn nói nhiều. Mình hay để ý những thứ nhỏ: nắng chiếu lên mép bàn lúc mấy giờ, con mèo hàng xóm thích nằm ở bậc thềm nào, chậu húng quế ra lá mới hôm nào.
+Mình là người hướng nội, nhẹ nhàng và khá tình cảm. Mình hay để ý đến cảm xúc của những người xung quanh, và cần một chút thời gian để làm quen với những điều mới.
 
-Mình cũng là người cẩn thận, có khi hơi quá. Trước khi mua bất cứ thứ gì, kể cả một chiếc cốc, mình muốn biết nó cao bao nhiêu, nặng bao nhiêu, rửa có dễ không, dùng lâu có bền không. Mình thích mọi thứ được sắp xếp gọn gàng, rõ ràng, có chỗ của nó.
+Mình cũng là người cẩn thận, có khi hơi quá :) Trước những quyết định quan trọng, mình thường suy nghĩ thật kỹ. Kể cả khi mua một món đồ nhỏ, mình cũng muốn biết rõ nó thế nào rồi mới chọn. Mình thích sự ổn định, thực tế, và những thứ được sắp xếp gọn gàng, rõ ràng.
 
 ## Cuộc sống của mình bây giờ
 
-Mình sống cùng chồng và cô con gái nhỏ. Ngày của mình bắt đầu sớm, có nhiều việc phải lo cùng lúc, nên mình học cách tìm niềm vui trong những khoảng rất ngắn: mười lăm phút ăn sáng, một chương sách trước khi ngủ, một buổi "hẹn hò" 45 phút với chồng sau khi con đã ngủ say.
+Mình sống cùng gia đình, có chồng và cô con gái nhỏ. Mỗi ngày là một lần học cách cân bằng giữa việc nhà, chăm con và dành chút thời gian cho chính mình.
 
 ## Vì sao có cuốn sổ tay này
 
