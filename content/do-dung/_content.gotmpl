@@ -1,0 +1,7 @@
+{{/* Tự tạo một trang chi tiết cho mỗi sản phẩm trong data/products.yaml */}}
+{{ range site.Data.products }}
+  {{ $content := dict "mediaType" "text/markdown" "value" .verdict }}
+  {{ $params := dict "pid" .id "description" .short }}
+  {{ $page := dict "path" .id "title" .name "kind" "page" "content" $content "params" $params }}
+  {{ $.AddPage $page }}
+{{ end }}
