@@ -1,0 +1,6 @@
+{{/* Tự tạo một trang chi tiết cho mỗi quán trong data/places.yaml */}}
+{{ range site.Data.places }}
+  {{ $content := dict "mediaType" "text/markdown" "value" .tip }}
+  {{ $params := dict "qid" .id "description" (printf "%s · %s · %s" .type .area .price) }}
+  {{ $.AddPage (dict "path" .id "title" .name "kind" "page" "content" $content "params" $params) }}
+{{ end }}
