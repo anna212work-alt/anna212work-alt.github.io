@@ -1,0 +1,72 @@
+{{ define "main" }}
+{{ $id := .Params.pid }}
+{{ $p := index (where site.Data.products "id" $id) 0 }}
+{{ $g := $p.group }}
+{{ $self := . }}
+<div class="wrap">
+  {{ partial "crumbs.html" . }}
+  <div class="layout">
+    <div class="stackb">
+      {{ if $p.sample }}<p class="samplebar">Đây là <b>dữ liệu mẫu</b> để minh hoạ cách trình bày. Thông số, giá và đánh giá sẽ được thay bằng số liệu thật khi mình đăng món đồ đã dùng.</p>{{ end }}
+      <section class="box ph">
+        <div class="ph-main">
+          <div class="row" style="gap:6px">
+            <span class="tag">{{ range where site.Data.product_groups "id" $g }}{{ .name }}{{ end }}</span>
+            {{ with $p.badge }}<span class="badge">{{ . }}</span>{{ end }}
+          </div>
+          <h1>{{ $p.name }}</h1>
+          <p>{{ $p.short }}</p>
+          <dl class="facts" style="margin-top:12px">
+            <div><dt>Bắt đầu dùng</dt><dd>{{ $p.used_since }}</dd></div>
+            <div><dt>Cách mình dùng</dt><dd>{{ $p.used_note }}</dd></div>
+          </dl>
+        </div>
+        <div class="ph-buy">
+          <small>Điểm của mình</small>
+          <div class="big">{{ $p.rating }}<small>/10</small></div>
+          <small>Giá tham khảo</small>
+          <div class="price">{{ $p.price }}</div>
+          <small>Xem giá ngày {{ $p.price_date }}. Giá trên sàn có thể đã đổi.</small>
+          <a class="btn full" href="{{ $p.link }}" rel="sponsored nofollow noopener" target="_blank">Xem trên {{ $p.shop }}</a>
+          <small>Liên kết tiếp thị: giá bạn trả không đổi. <a href="{{ "/cong-khai-affiliate/" | relURL }}">Chi tiết</a></small>
+        </div>
+      </section>
+
+      <div class="grid2">
+        <section class="box">
+          <h2 class="box-h">Thông số chi tiết <span>{{ len $p.specs }} mục</span></h2>
+          <dl class="kv" style="border:0;border-radius:0">{{ range $p.specs }}<div><dt>{{ index . 0 }}</dt><dd>{{ index . 1 }}</dd></div>{{ end }}</dl>
+        </section>
+        <section class="box">
+          <h2 class="box-h">Điểm theo tiêu chí <span>thang 10</span></h2>
+          <div class="bars">
+            {{ range $k, $v := $p.scores }}<div class="bar"><span>{{ $k }}</span><div class="bar-t"><i style="width:{{ mul $v 10 }}%"></i></div><b>{{ $v }}</b></div>{{ end }}
+          </div>
+        </section>
+      </div>
+
+      <div class="grid2">
+        <section class="box pc pros"><h2 class="box-h">Điểm mình thích</h2><ul>{{ range $p.pros }}<li>{{ . }}</li>{{ end }}</ul></section>
+        <section class="box pc cons"><h2 class="box-h">Điểm chưa ổn</h2><ul>{{ range $p.cons }}<li>{{ . }}</li>{{ end }}</ul></section>
+      </div>
+
+      <div class="grid2">
+        <section class="box"><h2 class="box-h">Hợp với ai</h2><p class="box-b">{{ $p.fit }}</p></section>
+        <section class="box"><h2 class="box-h">Không hợp với ai</h2><p class="box-b">{{ $p.notfit }}</p></section>
+      </div>
+
+      <section class="box"><h2 class="box-h">Cách dùng &amp; bảo quản</h2><p class="box-b">{{ $p.care }}</p></section>
+      <section class="box"><h2 class="box-h">Kết luận của mình</h2><div class="box-b body" style="padding:12px 14px">{{ .Content }}</div></section>
+
+      {{ $in := slice }}{{ range site.RegularPages }}{{ if in (.Params.products | default slice) $id }}{{ $in = $in | append . }}{{ end }}{{ end }}
+      {{ with $in }}<section class="box"><h2 class="box-h">Xuất hiện trong bài</h2>{{ range . }}{{ partial "postrow.html" . }}{{ end }}</section>{{ end }}
+
+      <section class="box">
+        <h2 class="box-h">Cùng nhóm</h2>
+        <div class="pgrid">{{ range where (where site.Data.products "group" $g) "id" "!=" $id }}{{ partial "prodcard.html" . }}{{ else }}<p>Chưa có món khác cùng nhóm.</p>{{ end }}</div>
+      </section>
+    </div>
+    {{ partial "sidebar.html" (dict "page" .) }}
+  </div>
+</div>
+{{ end }}
