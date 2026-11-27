@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="wrap">
+  {{ partial "crumbs.html" . }}
+  <div class="layout">
+    <div class="stackb">
+      <section class="box">
+        <div class="lh">
+          <h1>{{ .Title }}</h1>
+          <div class="intro">{{ .Content }}</div>
+          <dl class="facts" style="margin-top:10px">
+            <div><dt>Số món</dt><dd>{{ len site.Data.products }}</dd></div>
+            <div><dt>Nhóm</dt><dd>{{ len site.Data.product_groups }}</dd></div>
+            <div><dt>Giá xem lần cuối</dt><dd>{{ (index site.Data.products 0).price_date }}</dd></div>
+          </dl>
+          <div class="chips">{{ range site.Data.product_groups }}<a class="chip" href="#{{ .id }}">{{ .name }}</a>{{ end }}<a class="chip" href="#bang-so-sanh">Bảng so sánh</a></div>
+        </div>
+      </section>
+      {{ if where site.Data.products "sample" true }}<p class="samplebar">Các món có nhãn "dữ liệu mẫu" là ví dụ minh hoạ. Thông số sẽ được thay bằng số đo thật khi mình đăng sản phẩm đã dùng.</p>{{ end }}
+      <section class="box" id="bang-so-sanh">
+        <h2 class="box-h">Bảng so sánh nhanh <span>Sắp xếp theo điểm</span></h2>
+        {{ partial "comparetable.html" site.Data.products }}
+      </section>
+      {{ range site.Data.product_groups }}
+      {{ $g := .id }}
+      <section class="box" id="{{ .id }}">
+        <h2 class="box-h">{{ .name }} <span>{{ len (where site.Data.products "group" $g) }} món</span></h2>
+        <p class="box-b" style="padding-bottom:0;color:var(--soft)">{{ .desc }}</p>
+        <div class="pgrid">{{ range where site.Data.products "group" $g }}{{ partial "prodcard.html" . }}{{ else }}<p>Chưa có món nào.</p>{{ end }}</div>
+      </section>
+      {{ end }}
+      {{ partial "leadbox.html" . }}
+    </div>
+    {{ partial "sidebar.html" (dict "page" .) }}
+  </div>
+</div>
+{{ end }}
