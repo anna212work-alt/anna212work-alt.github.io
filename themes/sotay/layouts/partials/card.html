@@ -1,6 +1,0 @@
-<a class="post" href="{{ .RelPermalink }}">
-  {{ with .Params.categories }}<span class="tag">{{ index . 0 }}</span>{{ else }}{{ if eq .Section "review" }}<span class="tag">Review</span>{{ end }}{{ end }}
-  <h3>{{ .Title }}</h3>
-  <p>{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 140 }}{{ end }}</p>
-  <span class="meta">{{ .Date | time.Format "02/01/2006" }} · {{ .ReadingTime }} phút đọc</span>
-</a>
