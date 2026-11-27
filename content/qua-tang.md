@@ -1,13 +1,17 @@
 ---
-title: "File Excel quản lý chi tiêu nuôi con, miễn phí"
+title: "Sổ tay 30 ngày ghi lại điều nhỏ, miễn phí"
 layout: landing
-cta: "Gửi quà cho mình"
-description: "Mẫu Excel tự tính chi phí nuôi con theo tháng, kèm checklist đồ sơ sinh tối giản."
+cta: "Gửi sổ tay cho mình"
+description: "File PDF in được: 30 câu gợi ý lưu giữ kỷ niệm gia đình, trang lần đầu tiên của con, món ngon và sách đã đọc."
 ---
-Do một mẹ dân kế toán tự làm và dùng hằng tháng. Bạn sẽ nhận được:
+Một cuốn sổ nhỏ để bạn lưu giữ những ngày bình thường của gia đình mình. Mỗi ngày chỉ mất 3 phút.
 
-- **File Excel tự cộng** chi phí theo 4 nhóm: ăn uống, vệ sinh, sức khỏe, đồ dùng
-- **Cảnh báo tự động** khi nhóm nào sắp vượt ngân sách
-- **Checklist đồ sơ sinh tối giản**, có cột "có thể bỏ qua"
+| Bạn nhận được | Chi tiết |
+|---|---|
+| 30 trang gợi ý | Mỗi ngày một câu hỏi, ví dụ "Hôm nay con làm bạn bật cười vì điều gì?" |
+| Trang "lần đầu tiên của con" | Ghi ngày con biết lật, biết đi, tự cầm thìa… |
+| Trang "món ngon cả nhà thích" | Lưu công thức và kỷ niệm quanh bàn ăn |
+| Trang sách đã đọc | Tên sách, ngày đọc xong, câu muốn giữ lại |
+| Định dạng | PDF khổ A5, in được trên giấy A4 |
 
 Để lại tên và email, mình gửi ngay.
