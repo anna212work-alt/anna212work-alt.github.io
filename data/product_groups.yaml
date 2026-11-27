@@ -1,13 +1,10 @@
-# Các nhóm đồ trên trang "Đồ Anna dùng". Muốn thêm nhóm: thêm một khối mới.
-- id: so-sinh
-  name: Đồ sơ sinh
-  desc: Những món mình thấy thật sự cần trong 3 tháng đầu.
-- id: an-dam
-  name: Ăn dặm & bình sữa
-  desc: Dễ vệ sinh, bền, không cần mua cả bộ đắt tiền.
-- id: cho-me
-  name: Đồ cho mẹ
-  desc: Đi làm, hút sữa, và giữ chút thời gian cho mình.
-- id: gia-dung
-  name: Đồ gia dụng tiện lợi
-  desc: Tiết kiệm thời gian cho những ngày bận rộn.
+# Các nhóm đồ trên trang "Món nhỏ mình thương".
+- id: bep
+  name: Bếp & món ngon
+  desc: Cốc, ấm, hộp đựng và dụng cụ nhỏ cho căn bếp nhà mình.
+- id: be
+  name: Đồ cho con
+  desc: Những món mình dùng khi chăm con, chọn kỹ về chất liệu và độ an toàn.
+- id: doc-viet
+  name: Góc đọc & viết
+  desc: Đèn, sổ, bút cho những buổi tối đọc sách và ghi lại một ngày.
