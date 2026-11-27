@@ -1,8 +1,7 @@
 # ===== MÓN NHỎ MÌNH THƯƠNG =====
 # Mỗi sản phẩm là một khối bắt đầu bằng "- id:". Mỗi sản phẩm tự có một trang chi tiết: /do-dung/<id>/
 #
-# QUAN TRỌNG: sample: true = dữ liệu MẪU, trang sẽ hiện nhãn "Dữ liệu mẫu".
-# Khi thay bằng sản phẩm thật đã dùng, sửa đúng thông số thật (đo, cân, xem nhãn) rồi đổi thành sample: false.
+# Ghi đúng thông số thật (đo, cân, xem nhãn). sample: false cho sản phẩm thật.
 #
 # Các trường:
 #   id            tên ngắn không dấu (dùng trong bài: {{< sanpham id="coc-su-men-ran" >}})
@@ -18,210 +17,43 @@
 #   fit / notfit  hợp với ai / không hợp với ai
 #   care          cách dùng & bảo quản
 #   verdict       kết luận ngắn
-- id: coc-su-men-ran
-  group: bep
-  name: Cốc sứ men rạn 350 ml có quai
-  short: Chiếc cốc mình dùng cho cà phê sữa mỗi sáng, giữ ấm khá lâu, cầm vừa tay.
-  badge: Dùng mỗi ngày
-  sample: true
-  featured: true
-  price: "85.000 – 120.000 đ"
-  price_date: "27/11/2026"
-  shop: Shopee
-  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
-  rating: 8.6
-  scores: { "Chất lượng": 9, "Độ bền": 8, "Đáng tiền": 9, "Dễ dùng": 9, "Thẩm mỹ": 9 }
-  used_since: "03/2026"
-  used_note: "Dùng hằng ngày, rửa máy rửa bát khoảng 3 lần/tuần"
-  specs:
-    - ["Dung tích", "350 ml (đầy miệng), dùng thực tế ~300 ml"]
-    - ["Kích thước", "Cao 9,5 cm · miệng 8,5 cm · đáy 6 cm"]
-    - ["Trọng lượng", "Khoảng 320 g"]
-    - ["Chất liệu", "Sứ tráng men rạn, đáy để mộc"]
-    - ["Màu", "Kem sữa, rạn nâu nhạt"]
-    - ["Lò vi sóng", "Dùng được (không có viền kim loại)"]
-    - ["Máy rửa bát", "Dùng được, men không bong sau 8 tháng"]
-    - ["Xuất xứ", "Ghi theo nhãn sản phẩm thật"]
-    - ["Bảo hành", "Đổi trả khi vỡ lúc giao hàng (theo shop)"]
-  pros:
-    - "Thành dày, cà phê còn ấm sau khoảng 15 phút"
-    - "Quai to, cầm chắc tay cả khi tay ướt"
-    - "Men rạn che vết ố trà, cà phê rất tốt"
-  cons:
-    - "Hơi nặng nếu bạn thích cốc nhẹ"
-    - "Đáy mộc dễ bám bẩn nếu để ẩm lâu"
-  fit: "Người uống cà phê sữa, trà nóng buổi sáng; bàn làm việc cần một chiếc cốc chắc chắn."
-  notfit: "Người cần cốc mang đi (không có nắp) hoặc thích cốc thật mỏng nhẹ."
-  care: "Tráng nước nóng trước khi rót để giữ nhiệt lâu hơn. Lau khô đáy mộc sau khi rửa. Không đổ nước sôi vào cốc đang lạnh sâu."
-  verdict: "Một chiếc cốc bình thường nhưng làm buổi sáng dễ chịu hơn. Đáng tiền nếu bạn uống đồ nóng mỗi ngày."
-- id: am-loc-tra-thuy-tinh
-  group: bep
-  name: Ấm thuỷ tinh có lõi lọc 600 ml
-  short: Ấm pha trà nhỏ cho bàn làm việc, nhìn được màu trà, rửa nhanh.
-  badge: Đáng tiền nhất
-  sample: true
-  featured: true
-  price: "110.000 – 160.000 đ"
-  price_date: "27/11/2026"
-  shop: Shopee
-  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
-  rating: 8.8
-  scores: { "Chất lượng": 9, "Độ bền": 8, "Đáng tiền": 10, "Dễ dùng": 9, "Thẩm mỹ": 8 }
-  used_since: "05/2026"
-  used_note: "Pha 1–2 lần/ngày ở bàn làm việc"
-  specs:
-    - ["Dung tích", "600 ml (khoảng 3–4 cốc nhỏ)"]
-    - ["Chất liệu thân", "Thuỷ tinh borosilicate chịu nhiệt"]
-    - ["Lõi lọc", "Thép không gỉ, lưới mịn, tháo rời được"]
-    - ["Nắp", "Thép không gỉ, có viền silicon"]
-    - ["Nhiệt độ chịu được", "Theo nhãn nhà sản xuất (thường đến ~150 °C chênh lệch)"]
-    - ["Kích thước", "Cao 14 cm · rộng kể cả quai 15 cm"]
-    - ["Trọng lượng", "Khoảng 380 g"]
-    - ["Đun trực tiếp trên bếp", "Không (chỉ rót nước nóng)"]
-  pros:
-    - "Lõi lọc lưới mịn, trà lá nhỏ cũng không lọt"
-    - "Nhìn được màu trà, dễ canh độ đậm"
-    - "Tháo lõi rửa trong 1 phút"
-  cons:
-    - "Thuỷ tinh nên cần cẩn thận khi rửa"
-    - "Nắp kim loại nóng khi vừa rót nước sôi"
-  fit: "Người hay pha trà lá, trà hoa ở văn phòng hoặc ở nhà."
-  notfit: "Gia đình có trẻ nhỏ hay với tay lên bàn; người muốn đun trực tiếp."
-  care: "Để nguội bớt rồi mới rửa nước lạnh. Ngâm lõi lọc với baking soda mỗi tuần để hết ố."
-  verdict: "Món mình khuyên nhiều nhất cho người mới tập uống trà: rẻ, tiện, nhìn đẹp trên bàn."
-- id: hop-com-thuy-tinh
-  group: bep
-  name: Bộ 3 hộp thuỷ tinh chịu nhiệt có nắp khoá (370/640/1040 ml)
-  short: Bộ hộp mình dùng để đựng đồ ăn sẵn cho cả tuần và mang cơm đi làm.
-  badge: Dùng mỗi ngày
-  sample: true
-  featured: true
-  price: "180.000 – 260.000 đ / bộ 3"
-  price_date: "27/11/2026"
-  shop: Shopee
-  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
-  rating: 8.5
-  scores: { "Chất lượng": 9, "Độ bền": 9, "Đáng tiền": 8, "Dễ dùng": 8, "Thẩm mỹ": 8 }
-  used_since: "04/2026"
-  used_note: "Chuẩn bị đồ ăn Chủ nhật cho 3–4 ngày, mang cơm 3 buổi/tuần"
-  specs:
-    - ["Dung tích", "370 ml · 640 ml · 1.040 ml"]
-    - ["Chất liệu hộp", "Thuỷ tinh borosilicate chịu nhiệt"]
-    - ["Nắp", "Nhựa PP, 4 lẫy khoá, gioăng silicon tháo rời"]
-    - ["Lò vi sóng", "Hộp dùng được; mở hé nắp khi hâm"]
-    - ["Lò nướng", "Chỉ phần hộp, không cho nắp vào"]
-    - ["Tủ đông", "Dùng được, tránh đổ nước sôi ngay sau khi lấy ra"]
-    - ["Máy rửa bát", "Dùng được (nắp đặt giá trên)"]
-    - ["Trọng lượng hộp 640 ml", "Khoảng 520 g kể cả nắp"]
-  pros:
-    - "Gioăng kín, canh không rò khi để trong túi"
-    - "Không ám mùi, không ố màu cà ri hay nước sốt"
-    - "Nhìn xuyên được nên mở tủ lạnh là biết còn gì"
-  cons:
-    - "Nặng hơn hộp nhựa khá nhiều khi mang đi"
-    - "Gioăng cần tháo ra rửa riêng để không bị mốc"
-  fit: "Người hay nấu sẵn cuối tuần, mang cơm đi làm, cần hộp hâm trực tiếp."
-  notfit: "Người cần hộp siêu nhẹ cho trẻ mang đi học."
-  care: "Tháo gioăng rửa riêng mỗi tuần. Không chuyển hộp đột ngột từ tủ đông sang lò nóng."
-  verdict: "Bộ hộp giúp bữa trưa ở chỗ làm của mình đỡ vội vàng. Nặng, nhưng đáng."
-- id: thia-an-dam-silicon
-  group: be
-  name: Bộ thìa ăn dặm silicon đầu mềm (2 chiếc, cán dài 14 cm)
-  short: Đôi thìa đầu tiên con tự cầm, mềm, không làm đau lợi, dễ rửa.
-  badge: Con dùng mỗi ngày
-  sample: true
-  featured: false
-  price: "45.000 – 90.000 đ / bộ 2"
-  price_date: "27/11/2026"
-  shop: Shopee
-  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
-  rating: 8.3
-  scores: { "Chất lượng": 8, "Độ bền": 8, "Đáng tiền": 8, "Dễ dùng": 9, "Thẩm mỹ": 8 }
-  used_since: "09/2026"
-  used_note: "Dùng cho các bữa ăn dặm, bé tập tự xúc"
-  specs:
-    - ["Chiều dài", "14 cm"]
-    - ["Đầu thìa", "Silicon mềm, rộng khoảng 2,5 cm"]
-    - ["Cán", "Nhựa PP bọc silicon, có gờ chống trượt"]
-    - ["Chất liệu", "Silicon thực phẩm (xem chứng nhận trên nhãn sản phẩm thật)"]
-    - ["Tiệt trùng", "Luộc hoặc máy tiệt trùng hơi nước"]
-    - ["Máy rửa bát", "Dùng được"]
-    - ["Độ tuổi gợi ý", "Theo nhãn nhà sản xuất"]
-  pros:
-    - "Đầu mềm, con cắn vào không sao"
-    - "Cán có gờ, tay nhỏ cầm chắc"
-    - "Rửa nhanh, không bám mùi"
-  cons:
-    - "Silicon bám bụi nếu để ngoài không khí lâu"
-    - "Đầu thìa hơi nông, xúc cháo loãng dễ rơi"
-  fit: "Bé bắt đầu ăn dặm, tập tự xúc."
-  notfit: "Bé đã ăn thô, cần thìa sâu lòng hơn."
-  care: "Rửa ngay sau bữa ăn, tiệt trùng theo hướng dẫn. Kiểm tra đầu thìa thường xuyên, thay khi có vết rách."
-  verdict: "Món nhỏ mà con dùng nhiều nhất. Với đồ cho bé, bạn nhớ xem kỹ chứng nhận chất liệu trên nhãn nhé."
-- id: den-doc-sach-kep
-  group: doc-viet
-  name: Đèn đọc sách kẹp, sạc USB, 3 mức ánh sáng ấm
-  short: Đèn nhỏ mình kẹp vào đầu giường để đọc sách mà không làm cả nhà thức giấc.
-  badge: Góc đọc
-  sample: true
-  featured: false
-  price: "120.000 – 220.000 đ"
-  price_date: "27/11/2026"
-  shop: Shopee
-  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
-  rating: 8.1
-  scores: { "Chất lượng": 8, "Độ bền": 8, "Đáng tiền": 8, "Dễ dùng": 9, "Thẩm mỹ": 7 }
-  used_since: "02/2026"
-  used_note: "Đọc 15–30 phút mỗi tối, sạc khoảng 1 lần/tuần"
-  specs:
-    - ["Nhiệt độ màu", "3 mức: ấm · trung tính · trắng (theo nhãn)"]
-    - ["Độ sáng", "Chỉnh được, mức thấp đủ đọc trong phòng tối"]
-    - ["Pin", "Pin sạc tích hợp, sạc qua cổng USB-C"]
-    - ["Thời gian dùng thực tế", "Khoảng 6–7 buổi đọc 30 phút ở mức ấm vừa (mình tự đếm)"]
-    - ["Kẹp", "Mở tối đa khoảng 4 cm, có đệm cao su"]
-    - ["Cần đèn", "Cổ mềm uốn được, dài khoảng 25 cm"]
-    - ["Trọng lượng", "Khoảng 90 g"]
-  pros:
-    - "Ánh sáng ấm, dịu mắt, người nằm cạnh không bị chói"
-    - "Kẹp được vào sách, đầu giường, cạnh bàn"
-  cons:
-    - "Cổ mềm lâu ngày hơi lỏng"
-    - "Không báo pin, hết là tắt luôn"
-  fit: "Người đọc sách trước khi ngủ, ở chung phòng với người khác."
-  notfit: "Người cần đèn bàn sáng mạnh để làm việc lâu."
-  care: "Sạc đầy trước khi cất lâu ngày. Không uốn cổ đèn gập quá mạnh."
-  verdict: "Cây đèn nhỏ làm thói quen đọc mỗi tối dễ giữ hơn rất nhiều."
-- id: so-tay-cham-a5
-  group: doc-viet
-  name: Sổ tay chấm (dot grid) A5, 160 trang
-  short: Cuốn sổ mình ghi 3 dòng mỗi tối, giấy dày không lem bút gel.
-  badge: Dùng mỗi ngày
-  sample: true
-  featured: false
-  price: "60.000 – 95.000 đ"
-  price_date: "27/11/2026"
-  shop: Shopee
-  link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
-  rating: 8.4
-  scores: { "Chất lượng": 9, "Độ bền": 8, "Đáng tiền": 8, "Dễ dùng": 9, "Thẩm mỹ": 8 }
-  used_since: "01/2026"
-  used_note: "Viết mỗi tối, đang ở cuốn thứ 2"
-  specs:
-    - ["Khổ", "A5 (14,8 × 21 cm)"]
-    - ["Số trang", "160 trang (80 tờ)"]
-    - ["Định lượng giấy", "100 gsm"]
-    - ["Kiểu dòng", "Chấm cách 5 mm"]
-    - ["Gáy", "Khâu chỉ, mở phẳng 180°"]
-    - ["Bìa", "Bìa cứng bọc vải"]
-    - ["Phụ kiện", "Dây đánh dấu, dây chun giữ sổ"]
-    - ["Bút hợp", "Gel, bi, bút lông kim (bút dạ dầu có thể thấm nhẹ)"]
-  pros:
-    - "Mở phẳng nên viết thoải mái cả hai trang"
-    - "Giấy dày, bút gel không lem mặt sau"
-  cons:
-    - "Bìa vải dễ bám bẩn"
-    - "Hơi nặng để mang theo hằng ngày"
-  fit: "Người viết nhật ký, ghi chép, vẽ phác."
-  notfit: "Người cần sổ siêu nhẹ, bỏ túi."
-  care: "Bọc thêm bìa nilon nếu hay mang đi. Tránh để ở nơi ẩm."
-  verdict: "Cuốn sổ giúp mình giữ thói quen viết 3 dòng mỗi tối."
+#
+# ---- MẪU ĐỂ CHÉP (bỏ dấu # ở đầu mỗi dòng, sửa nội dung, rồi xoá dòng "[]" bên dưới) ----
+# - id: coc-su-men-ran
+#   group: bep
+#   name: Cốc sứ men rạn 350 ml có quai
+#   short: Chiếc cốc mình dùng cho cà phê sữa mỗi sáng, giữ ấm khá lâu, cầm vừa tay.
+#   badge: Dùng mỗi ngày
+#   sample: true
+#   featured: true
+#   price: "85.000 – 120.000 đ"
+#   price_date: "27/11/2026"
+#   shop: Shopee
+#   link: "https://s.shopee.vn/DAN-LINK-AFFILIATE"
+#   rating: 8.6
+#   scores: { "Chất lượng": 9, "Độ bền": 8, "Đáng tiền": 9, "Dễ dùng": 9, "Thẩm mỹ": 9 }
+#   used_since: "03/2026"
+#   used_note: "Dùng hằng ngày, rửa máy rửa bát khoảng 3 lần/tuần"
+#   specs:
+#     - ["Dung tích", "350 ml (đầy miệng), dùng thực tế ~300 ml"]
+#     - ["Kích thước", "Cao 9,5 cm · miệng 8,5 cm · đáy 6 cm"]
+#     - ["Trọng lượng", "Khoảng 320 g"]
+#     - ["Chất liệu", "Sứ tráng men rạn, đáy để mộc"]
+#     - ["Màu", "Kem sữa, rạn nâu nhạt"]
+#     - ["Lò vi sóng", "Dùng được (không có viền kim loại)"]
+#     - ["Máy rửa bát", "Dùng được, men không bong sau 8 tháng"]
+#     - ["Xuất xứ", "Ghi theo nhãn sản phẩm thật"]
+#     - ["Bảo hành", "Đổi trả khi vỡ lúc giao hàng (theo shop)"]
+#   pros:
+#     - "Thành dày, cà phê còn ấm sau khoảng 15 phút"
+#     - "Quai to, cầm chắc tay cả khi tay ướt"
+#     - "Men rạn che vết ố trà, cà phê rất tốt"
+#   cons:
+#     - "Hơi nặng nếu bạn thích cốc nhẹ"
+#     - "Đáy mộc dễ bám bẩn nếu để ẩm lâu"
+#   fit: "Người uống cà phê sữa, trà nóng buổi sáng; bàn làm việc cần một chiếc cốc chắc chắn."
+#   notfit: "Người cần cốc mang đi (không có nắp) hoặc thích cốc thật mỏng nhẹ."
+#   care: "Tráng nước nóng trước khi rót để giữ nhiệt lâu hơn. Lau khô đáy mộc sau khi rửa. Không đổ nước sôi vào cốc đang lạnh sâu."
+#   verdict: "Một chiếc cốc bình thường nhưng làm buổi sáng dễ chịu hơn. Đáng tiền nếu bạn uống đồ nóng mỗi ngày."
+
+[]

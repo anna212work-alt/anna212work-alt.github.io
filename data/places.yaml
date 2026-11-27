@@ -13,78 +13,33 @@
 #   kids          có hợp đưa con nhỏ đi không ; parking: chỗ để xe
 #   revisit       có quay lại không
 #   tip           mẹo nhỏ ; post: đường dẫn bài viết liên quan (nếu có)
+#
+# ---- MẪU ĐỂ CHÉP (bỏ dấu # ở đầu mỗi dòng, sửa nội dung, rồi xoá dòng "[]" bên dưới) ----
+# - id: xoi-dau-ngo
+#   name: Hàng xôi đầu ngõ
+#   sample: true
+#   type: Xôi
+#   area: Gần nhà
+#   address: "Đầu ngõ, cạnh cột điện (quán vỉa hè, không biển hiệu)"
+#   map: ""
+#   hours: "6:00 – khoảng 8:00, hết là nghỉ"
+#   price: "12.000 – 25.000 đ / người"
+#   price_date: "17/11/2026"
+#   rating: 9.0
+#   scores: { "Ngon": 9, "Sạch sẽ": 8, "Giá": 10, "Phục vụ": 10, "Không gian": 6 }
+#   dishes:
+#     - ["Xôi xéo", "15.000 đ", "Nhiều hành phi, ăn ấm"]
+#     - ["Xôi lạc", "12.000 đ", "Lạc bùi, xôi dẻo"]
+#     - ["Xôi xéo thêm ruốc", "20.000 đ", "Món chồng mình hay gọi"]
+#     - ["Xôi gói lá sen", "25.000 đ", "Chỉ có thứ Bảy"]
+#   visits:
+#     - { date: "03/11/2026", with: "Một mình", note: "Lần đầu mua, hỏi giá rồi ghi lại" }
+#     - { date: "17/11/2026", with: "Một mình", note: "Bà nhớ mình thích thêm hành phi" }
+#     - { date: "18/11/2026", with: "Chồng mua hộ", note: "Bà hỏi: mua cho vợ phải không?" }
+#   kids: "Được, nhưng ngồi ghế nhựa vỉa hè, nên mua mang về"
+#   parking: "Không có, dừng xe sát lề mua nhanh"
+#   revisit: "Có, gần như mỗi sáng"
+#   tip: "Đến trước 7:30 để còn đủ món. Thứ Bảy có xôi gói lá sen."
+#   post: "/posts/hang-xoi-dau-ngo/"
 
-- id: xoi-dau-ngo
-  name: Hàng xôi đầu ngõ
-  sample: true
-  type: Xôi
-  area: Gần nhà
-  address: "Đầu ngõ, cạnh cột điện (quán vỉa hè, không biển hiệu)"
-  map: ""
-  hours: "6:00 – khoảng 8:00, hết là nghỉ"
-  price: "12.000 – 25.000 đ / người"
-  price_date: "17/11/2026"
-  rating: 9.0
-  scores: { "Ngon": 9, "Sạch sẽ": 8, "Giá": 10, "Phục vụ": 10, "Không gian": 6 }
-  dishes:
-    - ["Xôi xéo", "15.000 đ", "Nhiều hành phi, ăn ấm"]
-    - ["Xôi lạc", "12.000 đ", "Lạc bùi, xôi dẻo"]
-    - ["Xôi xéo thêm ruốc", "20.000 đ", "Món chồng mình hay gọi"]
-    - ["Xôi gói lá sen", "25.000 đ", "Chỉ có thứ Bảy"]
-  visits:
-    - { date: "03/11/2026", with: "Một mình", note: "Lần đầu mua, hỏi giá rồi ghi lại" }
-    - { date: "17/11/2026", with: "Một mình", note: "Bà nhớ mình thích thêm hành phi" }
-    - { date: "18/11/2026", with: "Chồng mua hộ", note: "Bà hỏi: mua cho vợ phải không?" }
-  kids: "Được, nhưng ngồi ghế nhựa vỉa hè, nên mua mang về"
-  parking: "Không có, dừng xe sát lề mua nhanh"
-  revisit: "Có, gần như mỗi sáng"
-  tip: "Đến trước 7:30 để còn đủ món. Thứ Bảy có xôi gói lá sen."
-  post: "/posts/hang-xoi-dau-ngo/"
-
-- id: bun-cha-ngo-sau
-  name: Bún chả ngõ sau chợ
-  sample: true
-  type: Bún/Phở
-  area: Gần chợ
-  address: "Ngõ sau chợ, gian thứ 3 bên trái (ghi địa chỉ thật khi đăng)"
-  map: ""
-  hours: "10:30 – 14:00"
-  price: "40.000 – 60.000 đ / người"
-  price_date: "22/11/2026"
-  rating: 8.4
-  scores: { "Ngon": 9, "Sạch sẽ": 7, "Giá": 8, "Phục vụ": 8, "Không gian": 7 }
-  dishes:
-    - ["Bún chả suất thường", "40.000 đ", "Chả nướng than, nước chấm vừa ngọt"]
-    - ["Bún chả thêm nem", "55.000 đ", "Nem giòn, nên gọi chung chia nhau"]
-    - ["Trà đá", "3.000 đ", ""]
-  visits:
-    - { date: "22/11/2026", with: "Chồng và con", note: "Trưa Chủ nhật, quán đông, đợi 10 phút" }
-  kids: "Được, có ghế nhựa thấp; khói than hơi nhiều, nên ngồi bàn trong"
-  parking: "Gửi xe đầu ngõ, 5.000 đ"
-  revisit: "Có"
-  tip: "Đến trước 11:30 để tránh đông. Xin thêm tỏi ớt ngâm."
-  post: ""
-
-- id: ca-phe-sach-nho
-  name: Quán cà phê sách tầng hai
-  sample: true
-  type: Cà phê
-  area: Phố gần nhà
-  address: "Tầng 2, lối lên cầu thang cạnh hiệu sách cũ (ghi địa chỉ thật khi đăng)"
-  map: ""
-  hours: "7:30 – 22:00"
-  price: "35.000 – 55.000 đ / đồ uống"
-  price_date: "09/11/2026"
-  rating: 8.7
-  scores: { "Ngon": 8, "Sạch sẽ": 9, "Giá": 8, "Phục vụ": 9, "Không gian": 10 }
-  dishes:
-    - ["Cà phê sữa nóng", "35.000 đ", "Đậm, ít ngọt"]
-    - ["Trà hoa cúc mật ong", "45.000 đ", "Hợp đọc sách buổi tối"]
-    - ["Bánh chuối nướng", "30.000 đ", "Hết sớm vào cuối tuần"]
-  visits:
-    - { date: "09/11/2026", with: "Chồng", note: "Buổi hẹn hò hiếm hoi ngoài nhà, ngồi 2 tiếng đọc sách" }
-  kids: "Không hợp lắm: cầu thang dốc, không gian yên tĩnh"
-  parking: "Vỉa hè trước cửa, miễn phí"
-  revisit: "Có, khi được 'nghỉ phép' vài tiếng"
-  tip: "Chọn bàn cạnh cửa sổ phía đông vào buổi sáng, nắng rất đẹp."
-  post: ""
+[]
