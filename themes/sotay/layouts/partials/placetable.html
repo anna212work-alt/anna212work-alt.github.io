@@ -1,0 +1,20 @@
+<div class="tbl-wrap">
+<table class="tbl stack" id="ptable">
+  <thead><tr><th>Quán</th><th>Loại</th><th>Khu vực</th><th class="n">Điểm</th><th class="n">Giá / người</th><th>Lần gần nhất</th><th>Đưa con đi</th></tr></thead>
+  <tbody>
+  {{ range sort . "rating" "desc" }}
+    {{ $last := index .visits (sub (len .visits) 1) }}
+    <tr data-type="{{ .type }}" data-area="{{ .area }}">
+      <td><a href="{{ printf "/quan-an/%s/" .id | relURL }}">{{ .name }}</a>{{ if .sample }} <span class="sample-s">mẫu</span>{{ end }}</td>
+      <td>{{ .type }}</td>
+      <td>{{ .area }}</td>
+      <td class="n"><b>{{ .rating }}</b>/10</td>
+      <td class="n">{{ .price }}</td>
+      <td>{{ $last.date }} · {{ $last.with }}</td>
+      <td>{{ .kids | truncate 40 }}</td>
+    </tr>
+  {{ end }}
+  </tbody>
+</table>
+</div>
+<script>{for(const t of document.querySelectorAll('table.stack')){const h=[...t.tHead.rows[0].cells].map(c=>c.textContent);for(const r of t.tBodies[0].rows)[...r.cells].forEach((c,i)=>c.dataset.l=h[i]||'')}}</script>

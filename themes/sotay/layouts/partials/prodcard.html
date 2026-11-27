@@ -1,0 +1,20 @@
+{{/* Thẻ sản phẩm gọn. Nhận một sản phẩm trong data/products.yaml */}}
+{{ $url := printf "/do-dung/%s/" .id | relURL }}
+<article class="pcard">
+  <div class="pcard-top">
+    {{ with .badge }}<span class="badge">{{ . }}</span>{{ end }}
+    {{ if .sample }}<span class="sample-s">dữ liệu mẫu</span>{{ end }}
+    <span class="score" title="Điểm của mình">{{ .rating }}<small>/10</small></span>
+  </div>
+  <h3><a href="{{ $url }}">{{ .name }}</a></h3>
+  <p>{{ .short }}</p>
+  <dl class="kv">
+    {{ range first 3 .specs }}<div><dt>{{ index . 0 }}</dt><dd>{{ index . 1 }}</dd></div>{{ end }}
+    <div><dt>Giá tham khảo</dt><dd class="nw">{{ .price }}</dd></div>
+    <div><dt>Đã dùng từ</dt><dd>{{ .used_since }}</dd></div>
+  </dl>
+  <div class="pcard-act">
+    <a class="btn ghost sm" href="{{ $url }}">Xem đủ thông số</a>
+    <a class="btn sm" href="{{ .link }}" rel="sponsored nofollow noopener" target="_blank">Xem trên {{ .shop }}</a>
+  </div>
+</article>

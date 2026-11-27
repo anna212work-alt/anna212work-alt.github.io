@@ -1,13 +1,29 @@
-<header class="top">
-  <nav class="nav" aria-label="Điều hướng chính">
+<header class="hd">
+  <div class="hd-top wrap">
     <a class="logo" href="{{ "/" | relURL }}">
       <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="3" width="20" height="20" rx="4" fill="var(--berry)"/><path d="M8 9h10M8 13h10M8 17h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-      {{ site.Title }}
+      <span><b>{{ site.Title }}</b><small>{{ site.Params.tagline }}</small></span>
     </a>
-    {{ $cur := . }}
-    {{ range site.Menus.main }}
-      <a class="l{{ if or ($cur.IsMenuCurrent "main" .) ($cur.HasMenuCurrent "main" .) }} on{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
-    {{ end }}
+    <form class="hd-search" action="{{ "/tim-kiem/" | relURL }}" method="get" role="search">
+      <input type="search" name="q" placeholder="Tìm bài viết, món đồ…" aria-label="Tìm kiếm">
+      <button type="submit">Tìm</button>
+    </form>
     <a class="btn sm" href="{{ "/qua-tang/" | relURL }}">Nhận quà miễn phí</a>
+  </div>
+  <nav class="hd-nav" aria-label="Điều hướng chính">
+    <div class="wrap row">
+      {{ $cur := . }}
+      {{ range site.Menus.main }}
+        <a class="{{ if or ($cur.IsMenuCurrent "main" .) ($cur.HasMenuCurrent "main" .) }}on{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+      {{ end }}
+    </div>
+  </nav>
+  <nav class="hd-cats" aria-label="Chuyên mục">
+    <div class="wrap row">
+      <span class="lbl">Chuyên mục</span>
+      {{ range (site.GetPage "/categories").Pages.ByTitle }}
+        <a href="{{ .RelPermalink }}" style="--c:var(--{{ .Params.color | default "aqua" }})">{{ .Title }} <i>{{ len .Pages }}</i></a>
+      {{ end }}
+    </div>
   </nav>
 </header>

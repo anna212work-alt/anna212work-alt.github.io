@@ -1,0 +1,5 @@
+<nav class="crumbs" aria-label="Đường dẫn">
+  <a href="{{ "/" | relURL }}">Trang chủ</a>
+  {{ range .Ancestors.Reverse }}{{ if not .IsHome }}<span>›</span><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}{{ end }}
+  <span>›</span><b>{{ .LinkTitle }}</b>
+</nav>

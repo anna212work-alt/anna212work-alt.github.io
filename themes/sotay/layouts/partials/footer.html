@@ -1,14 +1,28 @@
-<footer class="foot">
-  <div class="wrap foot-in">
-    <div>
-      <b class="logo-t">{{ site.Title }}</b>
-      <p>{{ site.Params.description }}</p>
-    </div>
-    <div class="foot-links">
-      {{ range site.Menus.footer }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}
-      {{ with site.Params.tiktok }}<a href="{{ . }}">TikTok</a>{{ end }}
-      {{ with site.Params.facebook }}<a href="{{ . }}">Facebook</a>{{ end }}
-    </div>
+<footer class="ft">
+  <div class="wrap ft-grid">
+    <section class="box">
+      <h2 class="box-h">{{ site.Title }}</h2>
+      <div class="box-b"><p>{{ site.Params.description }}</p></div>
+    </section>
+    <section class="box">
+      <h2 class="box-h">Chuyên mục</h2>
+      <ul class="box-b links">{{ range (site.GetPage "/categories").Pages.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span>{{ len .Pages }} bài</span></li>{{ end }}</ul>
+    </section>
+    <section class="box">
+      <h2 class="box-h">Trang</h2>
+      <ul class="box-b links">
+        {{ range site.Menus.main }}<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>{{ end }}
+        {{ range site.Menus.footer }}<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>{{ end }}
+      </ul>
+    </section>
+    <section class="box">
+      <h2 class="box-h">Liên hệ</h2>
+      <ul class="box-b links">
+        <li>Email: <span class="nw">{{ site.Params.email }}</span></li>
+        {{ with site.Params.facebook }}<li><a href="{{ . }}">Facebook</a></li>{{ end }}
+        {{ with site.Params.tiktok }}<li><a href="{{ . }}">TikTok</a></li>{{ end }}
+      </ul>
+    </section>
   </div>
-  <p class="fine">Một số liên kết trên trang là liên kết tiếp thị: nếu bạn mua qua đó, mình nhận một khoản hoa hồng nhỏ, giá bạn trả không đổi. <a href="{{ "/cong-khai-affiliate/" | relURL }}">Tìm hiểu thêm</a>.<br>© {{ now.Year }} {{ site.Title }}</p>
+  <p class="fine wrap">Một số liên kết là liên kết tiếp thị: nếu bạn mua qua đó, mình nhận một khoản hoa hồng nhỏ, giá bạn trả không đổi. <a href="{{ "/cong-khai-affiliate/" | relURL }}">Chi tiết</a> · © {{ now.Year }} {{ site.Title }}</p>
 </footer>

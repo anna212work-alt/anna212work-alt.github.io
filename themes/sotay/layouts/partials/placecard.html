@@ -1,0 +1,18 @@
+{{ $url := printf "/quan-an/%s/" .id | relURL }}
+{{ $last := index .visits (sub (len .visits) 1) }}
+<article class="pcard" data-type="{{ .type }}">
+  <div class="pcard-top">
+    <span class="badge">{{ .type }}</span>
+    {{ if .sample }}<span class="sample-s">mẫu</span>{{ end }}
+    <span class="score">{{ .rating }}<small>/10</small></span>
+  </div>
+  <h3><a href="{{ $url }}">{{ .name }}</a></h3>
+  <dl class="kv">
+    <div><dt>Khu vực</dt><dd>{{ .area }}</dd></div>
+    <div><dt>Giờ mở cửa</dt><dd>{{ .hours }}</dd></div>
+    <div><dt>Giá / người</dt><dd>{{ .price }}</dd></div>
+    <div><dt>Món ngon nhất</dt><dd>{{ index (index .dishes 0) 0 }}</dd></div>
+    <div><dt>Lần gần nhất</dt><dd>{{ $last.date }} · {{ $last.with }}</dd></div>
+  </dl>
+  <div class="pcard-act"><a class="btn ghost sm" href="{{ $url }}">Xem đủ ghi chép</a>{{ with .map }}<a class="btn sm" href="{{ . }}" target="_blank" rel="noopener">Bản đồ</a>{{ end }}</div>
+</article>

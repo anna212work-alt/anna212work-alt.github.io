@@ -1,0 +1,19 @@
+<div class="tbl-wrap">
+<table class="tbl stack">
+  <thead><tr><th>Món đồ</th><th>Nhóm</th><th class="n">Điểm</th><th class="n">Giá tham khảo</th><th>Đã dùng từ</th><th>Nơi mua</th></tr></thead>
+  <tbody>
+  {{ range sort . "rating" "desc" }}
+    {{ $g := .group }}
+    <tr>
+      <td><a href="{{ printf "/do-dung/%s/" .id | relURL }}">{{ .name }}</a>{{ if .sample }} <span class="sample-s">mẫu</span>{{ end }}</td>
+      <td>{{ range where site.Data.product_groups "id" $g }}{{ .name }}{{ end }}</td>
+      <td class="n"><b>{{ .rating }}</b>/10</td>
+      <td class="n">{{ .price }}</td>
+      <td>{{ .used_since }}</td>
+      <td><a href="{{ .link }}" rel="sponsored nofollow noopener" target="_blank">{{ .shop }}</a></td>
+    </tr>
+  {{ end }}
+  </tbody>
+</table>
+</div>
+<script>{for(const t of document.querySelectorAll('table.stack')){const h=[...t.tHead.rows[0].cells].map(c=>c.textContent);for(const r of t.tBodies[0].rows)[...r.cells].forEach((c,i)=>c.dataset.l=h[i]||'')}}</script>

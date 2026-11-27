@@ -1,0 +1,74 @@
+{{/* Cột phải dùng chung. Gọi: partial "sidebar.html" (dict "page" . "toc" true) */}}
+{{ $p := .page }}
+<aside class="side">
+  {{ if and .toc $p.TableOfContents (ne $p.TableOfContents "<nav id=\"TableOfContents\"></nav>") }}
+  <section class="box toc">
+    <h2 class="box-h">Trong bài này</h2>
+    <div class="box-b">{{ $p.TableOfContents }}</div>
+  </section>
+  {{ end }}
+
+  <section class="box">
+    <h2 class="box-h">Về Anna</h2>
+    <div class="box-b about-mini">
+      {{ partial "avatar.html" . }}
+      <p>Hướng nội, thích sự chậm rãi và những thứ ngăn nắp. Sống cùng chồng và cô con gái nhỏ. Blog là nơi mình lưu giữ món ngon, sách hay, chuyện của con và những ngày bình thường của cả nhà.</p>
+      <dl class="stats">
+        <div><dt>Bài nhật ký</dt><dd>{{ len (where site.RegularPages "Section" "posts") }}</dd></div>
+        <div><dt>Món đồ đã review</dt><dd>{{ len (site.Data.products | default slice) }}</dd></div>
+        <div><dt>Quán đã ghé</dt><dd>{{ len (site.Data.places | default slice) }}</dd></div>
+      </dl>
+      <a href="{{ "/ve-anna/" | relURL }}">Đọc thêm về mình →</a>
+    </div>
+  </section>
+
+  <section class="box gift">
+    <h2 class="box-h">Quà miễn phí</h2>
+    <div class="box-b">
+      <b>{{ site.Params.giftName }}</b>
+      <p>30 trang in được, mỗi ngày một câu gợi ý để ghi lại một kỷ niệm nhỏ của gia đình. Kèm trang "lần đầu tiên của con".</p>
+      <a class="btn sm full" href="{{ "/qua-tang/" | relURL }}">Nhận qua email</a>
+    </div>
+  </section>
+
+  <section class="box">
+    <h2 class="box-h">Chuyên mục</h2>
+    <ul class="box-b links">{{ range (site.GetPage "/categories").Pages.ByTitle }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span>{{ len .Pages }}</span></li>{{ end }}</ul>
+  </section>
+
+  {{ with site.Data.products }}
+  <section class="box">
+    <h2 class="box-h">Món nhỏ được xem nhiều</h2>
+    <ul class="box-b mini-prods">
+      {{ range first 4 (sort . "rating" "desc") }}
+      <li><a href="{{ printf "/do-dung/%s/" .id | relURL }}">{{ .name }}</a><span>{{ .rating }}/10 · {{ .price }}</span></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with site.Data.places }}
+  <section class="box">
+    <h2 class="box-h">Quán ngon trong sổ</h2>
+    <ul class="box-b mini-prods">
+      {{ range first 4 (sort . "rating" "desc") }}
+      <li><a href="{{ printf "/quan-an/%s/" .id | relURL }}">{{ .name }}</a><span>{{ .type }} · {{ .rating }}/10 · {{ .price }}</span></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ with where site.RegularPages "Section" "in" (slice "posts" "review") }}
+  <section class="box">
+    <h2 class="box-h">Mới cập nhật</h2>
+    <ul class="box-b links">{{ range first 5 . }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span class="nw">{{ .Date | time.Format "02/01" }}</span></li>{{ end }}</ul>
+  </section>
+  {{ end }}
+
+  {{ with site.Taxonomies.tags }}
+  <section class="box">
+    <h2 class="box-h">Thẻ</h2>
+    <div class="box-b tags">{{ range .ByCount }}<a href="{{ .Page.RelPermalink }}">#{{ .Page.Title }} <i>{{ .Count }}</i></a>{{ end }}</div>
+  </section>
+  {{ end }}
+</aside>
