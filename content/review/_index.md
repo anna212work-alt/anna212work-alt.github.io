@@ -1,4 +1,4 @@
 ---
-title: "Review & So sánh"
+title: "So sánh chi tiết"
+description: "Đặt các món đồ nhỏ cạnh nhau: đo, cân, dùng thử và ghi đủ thông số, ưu nhược điểm, giá tham khảo kèm ngày xem giá."
 ---
-So sánh thật, có cả ưu và nhược điểm, để bạn chọn đúng món hợp với nhà mình mà không tốn tiền thử.
