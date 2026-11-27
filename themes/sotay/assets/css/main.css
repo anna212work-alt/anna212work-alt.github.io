@@ -214,3 +214,7 @@ a{color:var(--link)}
 .ft-grid{align-items:start}
 .links a,.mini-prods a{text-decoration:none}
 .links a:hover,.mini-prods a:hover{text-decoration:underline}
+.empty-s{display:grid;gap:4px;padding:18px 16px;background:repeating-linear-gradient(135deg,transparent 0 10px,var(--head) 10px 11px)}
+.empty-s b{font:600 16px Lora,serif}
+.empty-s span{color:var(--soft);font-size:14.5px;max-width:70ch}
+.soon{margin:0;font-size:13.5px;color:var(--soft);border:1px dashed var(--line);border-radius:8px;padding:8px 10px;text-align:center}
